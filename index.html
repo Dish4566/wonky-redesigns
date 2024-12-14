@@ -1,11 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wonky Redesigns</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Shape Maker</title>
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
+  </head>
+  <body>
+    <button type="menu" onclick="openNav()">open settings</button>
+
+    <div id="settingsHolder">
+      <button type="menu" id="closebtn" onclick="closeNav()">X</button>
+      <button type="button" id="adder" type="button" onclick="changeMode()">Preview</button>
+
+      <div class="settings">
+        <label for="shape">Shape:</label>
+        <select name="shape" id="shape" title="Choose 3D shape">
+          <option value='null'></option>
+          <option value='cone'>Cone</option>
+          <option value='box'>Cube</option>
+          <option value='cylinder'>Cylinder</option>
+          <option value='ellipsoid'>Ellipsoid</option>
+          <option value='plane'>Plane</option>
+          <option value='torus'>Torus</option>
+        </select><br>
+
+        <label for="shapeColor">Color:</label>
+        <input name="shapeColor" id="shapeColor" type="color"/><br>
+
+        <p id="error"></p>
+      </div>
+
+      <div class="settings">
+        <h4>Position</h4>
+        
+        <label for="x">X:</label>
+        <input name="x" id="x" type="number" placeholder="0"/><br>
+
+        <label for="y">Y:</label>
+        <input name="y" id="y" type="number" placeholder="0"/><br>
+
+        <label for="z">Z:</label>
+        <input name="z" id="z" type="number" placeholder="0"/><br>
+      </div>
+
+      <div class="settings">
+        <h4>Outline</h4>
+        
+        <label for="stToggle">Enabled?</label>
+        <input name="stToggle" id="stToggle" class="checkbox" type="checkbox" value="Stroke Visible?"/><br>
+
+        <label for="stWeight">Weight:</label>
+        <input name="stWeight" id="stWeight" type="number" placeholder="0" value="1"/><br>
+
+        <label for="stColor">Color:</label>
+        <input name="stColor" id="stColor" type="color"/><br>
+      </div>
+
+      <div class="settings">
+        <button class="drop-btn" id="sizeDrop"><h4>Size</h4><i class="fa fa-caret-down"></i></button>
+        <br>
+        
+        <div class="drop-content hidden" id="sizeContent">
+          <label for="width">Width:</label>
+          <input name="width" id="width" type="number" placeholder="50" value="50"/><br>
+
+          <label for="height">Height:</label>
+          <input name="height" id="height" type="number" placeholder="50" value="50"/><br>
+
+          <label for="length">Length:</label>
+          <input name="length" id="length" type="number" placeholder="50" value="50"/><br>
+        </div>
+      </div>
+
+      <div class="settings">
+        <button class="drop-btn" id="lightDrop"><h4>Lighting</h4><i class="fa fa-caret-down"></i></button>
+        <br>
+        
+        <div class="drop-content hidden" id="lightContent">
+          <label for="lightToggle">Enabled?</label>
+          <input name="lightToggle" id="lightToggle" class="checkbox" type="checkbox" value="Lighting Visible?"/><br>
+
+          <div class="hidden" id="light">
+            <label for="lightPoint">Mouse:</label>
+            <input name="lightPoint" id="lightPoint" type="number" placeholder="50" value="50"/><br>
+
+            <label for="lightAmbient">Ambient:</label>
+            <input name="lightAmbient" id="lightAmbient" type="number" placeholder="50" value="50"/><br>
+
+            <label for="lightDirect">Directional:</label>
+            <input name="lightDirect" id="lightDirect" type="number" placeholder="50" value="50"/><br>
+          </div>
+        </div>
+      </div>
+
+      <br><br><br>
+    </div>
+
+    <div id="canvas_holder"></div>
+    <script src="draw.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
